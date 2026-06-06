@@ -1,0 +1,76 @@
+services:
+  app:
+    build:
+      args:
+        user: www
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: filament-cms
+    container_name: filament-cms-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - filament-cms
+
+  db:
+    image: mysql:8.0
+    container_name: filament-cms-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-filament_cms}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootsecret}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_USER: ${DB_USERNAME:-filament}
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - filament-cms
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-rootsecret}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: filament-cms-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootsecret}
+      UPLOAD_LIMIT: 300M
+    ports:
+      - "8089:80"
+    networks:
+      - filament-cms
+    depends_on:
+      db:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    container_name: filament-cms-nginx
+    restart: unless-stopped
+    ports:
+      - "8088:80"
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - filament-cms
+    depends_on:
+      - app
+
+networks:
+  filament-cms:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
