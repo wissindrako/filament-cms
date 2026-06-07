@@ -8,7 +8,8 @@
       "Bash(php -r \"echo PHP_VERSION;\")",
       "Bash(php artisan:*)",
       "Bash(docker exec filament-cms-app:*)",
-      "Bash(scripts/optimize.bat)"
+      "Bash(scripts/optimize.bat)",
+      "Bash(grep -E \"\\\\.\\(blade\\\\.php|html\\)$\")"
     ]
   }
 }

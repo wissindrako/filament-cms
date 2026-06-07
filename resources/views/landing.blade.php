@@ -19,26 +19,26 @@
         :root {
             --font-base: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
-            --ink-1:        #0f172a;
-            --ink-2:        #334155;
-            --ink-3:        #64748b;
-            --ink-4:        #94a3b8;
-            --ink-inv:      #f1f5f9;
+            --ink-1:        #e2e8f0;
+            --ink-2:        #cbd5e1;
+            --ink-3:        #94a3b8;
+            --ink-4:        #64748b;
+            --ink-inv:      #0f172a;
 
-            --surface:      #ffffff;
-            --surface-sub:  #f8fafc;
-            --surface-dark: #0a0f1e;
-            --surface-pain: #0d1526;
+            --surface:      #0d1f12;
+            --surface-sub:  #0f2415;
+            --surface-dark: #081a0d;
+            --surface-pain: #0a1a0d;
 
-            --brand:        #6366f1;
-            --brand-hover:  #4f46e5;
-            --brand-dim:    rgba(99,102,241,0.12);
-            --brand-border: rgba(99,102,241,0.25);
+            --brand:        #16a34a;
+            --brand-hover:  #15803d;
+            --brand-dim:    rgba(22,163,74,0.12);
+            --brand-border: rgba(22,163,74,0.25);
 
             --success:      #10b981;
             --warning:      #f59e0b;
 
-            --border:       rgba(15,23,42,0.08);
+            --border:       rgba(255,255,255,0.08);
             --border-dark:  rgba(255,255,255,0.08);
 
             --r-card:  12px;
@@ -49,12 +49,12 @@
         /* ── Base ────────────────────────────────────────── */
         *, *::before, *::after { box-sizing: border-box; }
         html { font-family: var(--font-base); }
-        body { background: var(--surface); color: var(--ink-1); -webkit-font-smoothing: antialiased; }
+        body { background: var(--surface); color: var(--ink-1); -webkit-font-smoothing: antialiased; color-scheme: dark; }
         [x-cloak] { display: none !important; }
 
         /* ── Gradiente de texto de marca ─────────────────── */
         .text-brand-gradient {
-            background: linear-gradient(135deg, #818cf8, #a78bfa, #38bdf8);
+            background: linear-gradient(135deg, #4ade80, #22c55e, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -63,7 +63,7 @@
         /* ── Hero ────────────────────────────────────────── */
         .hero-bg {
             background-color: var(--surface-dark);
-            background-image: linear-gradient(145deg, #0a0f1e 0%, #0f172a 45%, #160d3a 75%, #0c1a3a 100%);
+            background-image: linear-gradient(145deg, #081a0d 0%, #0f2215 45%, #0a2d17 75%, #0c1f14 100%);
         }
 
         /* ── Firma visual: borde-pipeline ────────────────── */
@@ -77,7 +77,7 @@
         /* ── Sección "dolor" — fondo oscuro pesado ───────── */
         .pain-bg {
             background-color: var(--surface-pain);
-            background-image: linear-gradient(160deg, #0d1526 0%, #111827 100%);
+            background-image: linear-gradient(160deg, #0a1a0d 0%, #111a13 100%);
         }
 
         /* ── Tarjetas ────────────────────────────────────── */
@@ -88,8 +88,8 @@
             transition: box-shadow 0.2s ease, border-color 0.2s ease;
         }
         .card:hover {
-            box-shadow: 0 8px 24px rgba(15,23,42,0.08);
-            border-color: rgba(99,102,241,0.2);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            border-color: rgba(22,163,74,0.35);
         }
         .card-subtle {
             background: var(--surface-sub);
@@ -109,7 +109,7 @@
             border-radius: var(--r-card);
             font-size: 1rem;
             transition: background 0.15s ease, transform 0.1s ease;
-            box-shadow: 0 4px 14px rgba(99,102,241,0.3);
+            box-shadow: 0 4px 14px rgba(22,163,74,0.3);
         }
         .btn-primary:hover {
             background: var(--brand-hover);
@@ -138,7 +138,7 @@
             text-transform: uppercase;
             color: var(--brand);
         }
-        .section-label-inv { color: #818cf8; }
+        .section-label-inv { color: #4ade80; }
 
         /* ── Slider ──────────────────────────────────────── */
         .slider-btn {
@@ -151,15 +151,15 @@
             transition: border-color 0.15s, box-shadow 0.15s;
             box-shadow: 0 1px 4px rgba(15,23,42,0.08);
         }
-        .slider-btn:hover { border-color: var(--brand); box-shadow: 0 2px 8px rgba(99,102,241,0.15); }
+        .slider-btn:hover { border-color: var(--brand); box-shadow: 0 2px 8px rgba(22,163,74,0.15); }
         .slider-btn svg { width: 1.1rem; height: 1.1rem; color: var(--ink-3); transition: color 0.15s; }
         .slider-btn:hover svg { color: var(--brand); }
 
         /* ── Inputs ──────────────────────────────────────── */
         .form-input {
             width: 100%;
-            background: #f8fafc;
-            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: var(--r-input);
             padding: 0.75rem 1rem;
             font-size: 0.875rem;
@@ -168,7 +168,10 @@
             transition: border-color 0.15s, box-shadow 0.15s;
         }
         .form-input::placeholder { color: var(--ink-4); }
-        .form-input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-dim); background: #fff; }
+        .form-input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-dim); background: rgba(255,255,255,0.07); }
+
+        /* ── Select options dark ────────────────────────── */
+        .form-input option { background: #0f2415; color: var(--ink-1); }
 
         /* ── Animación pulse badge ───────────────────────── */
         @keyframes pulse-dot {
@@ -184,7 +187,7 @@
      NAVBAR
      Fondo blanco sólido con borde sutil — no compite con el hero
 ═══════════════════════════════════════════════════════════ --}}
-<nav class="fixed top-0 w-full z-50 bg-white border-b" style="border-color: var(--border);" x-data="{ open: false }">
+<nav class="fixed top-0 w-full z-50 border-b" style="background:var(--surface-dark); border-color: var(--border-dark);" x-data="{ open: false }">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <a href="#" class="text-lg font-bold tracking-tight" style="color: var(--ink-1);">
@@ -233,15 +236,15 @@
 <section class="hero-bg min-h-screen flex items-center pt-16 relative overflow-hidden">
     {{-- Orbes de fondo —  deliberadamente sutiles --}}
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="absolute top-1/3 left-1/4 w-80 h-80 rounded-full" style="background:rgba(99,102,241,0.07); filter:blur(80px);"></div>
-        <div class="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full" style="background:rgba(139,92,246,0.06); filter:blur(60px);"></div>
+        <div class="absolute top-1/3 left-1/4 w-80 h-80 rounded-full" style="background:rgba(22,163,74,0.07); filter:blur(80px);"></div>
+        <div class="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full" style="background:rgba(34,197,94,0.06); filter:blur(60px);"></div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 text-center">
 
         {{-- Badge de disponibilidad --}}
         <div class="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full text-sm font-semibold"
-             style="background:var(--brand-dim); border:1px solid var(--brand-border); color:#a5b4fc;">
+             style="background:var(--brand-dim); border:1px solid var(--brand-border); color:#86efac;">
             <span class="w-1.5 h-1.5 rounded-full pulse-dot" style="background:#4ade80;"></span>
             Aceptando nuevos clientes — plazas limitadas este mes
         </div>
@@ -255,7 +258,7 @@
         {{-- Frase de marca: une "fly" del brand con el contraste correr vs. volar --}}
         {{-- Zeigarnik: cierra el loop aspiracional del h1 antes del subtitle --}}
         <p style="font-size:1.25rem; font-weight:600; color:#e2e8f0; margin-bottom:1.75rem; letter-spacing:-0.01em;">
-            Deja de correr.&nbsp; <span style="color:#818cf8;">Empieza a volar.</span>
+            Deja de correr.&nbsp; <span style="color:#4ade80;">Empieza a volar.</span>
         </p>
 
         <p style="font-size:1.125rem; color:#94a3b8; max-width:36rem; margin:0 auto 0.75rem; line-height:1.7;">
@@ -331,8 +334,8 @@
                 ],
             ] as $item)
             <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:var(--r-card); padding:1.75rem;">
-                <div class="mb-4" style="width:2.5rem;height:2.5rem;background:rgba(99,102,241,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;">
-                    <svg style="width:1.25rem;height:1.25rem;color:#818cf8;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="mb-4" style="width:2.5rem;height:2.5rem;background:rgba(22,163,74,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                    <svg style="width:1.25rem;height:1.25rem;color:#4ade80;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         {!! $item['icon'] !!}
                     </svg>
                 </div>
@@ -343,7 +346,7 @@
         </div>
 
         <div class="text-center mt-10">
-            <a href="#services" style="font-size:0.875rem;font-weight:600;color:#818cf8;display:inline-flex;align-items:center;gap:0.4rem;">
+            <a href="#services" style="font-size:0.875rem;font-weight:600;color:#4ade80;display:inline-flex;align-items:center;gap:0.4rem;">
                 Nosotros resolvemos esto
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </a>
@@ -457,7 +460,7 @@
                             <img src="{{ $service->getFirstMediaUrl('cover') }}" alt="{{ $service->title }}"
                                  class="w-full object-cover" style="height:11rem;">
                             @else
-                            <div style="height:11rem;background:linear-gradient(135deg,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;">
+                            <div style="height:11rem;background:linear-gradient(135deg,#16a34a,#15803d);display:flex;align-items:center;justify-content:center;">
                                 <svg style="width:3rem;height:3rem;color:rgba(255,255,255,0.25);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                 </svg>
@@ -551,10 +554,10 @@
 
             <div style="display:flex;flex-direction:column;gap:1rem;">
                 {{-- Métrica principal con firma pipeline --}}
-                <div style="background:var(--brand);border-radius:var(--r-card);padding:2rem;border-left:4px solid #a5b4fc;">
+                <div style="background:var(--brand);border-radius:var(--r-card);padding:2rem;border-left:4px solid #86efac;">
                     <div style="font-size:3.5rem;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.04em;margin-bottom:0.5rem;">+40%</div>
                     <div style="font-weight:600;color:#fff;font-size:1.0625rem;margin-bottom:0.375rem;">Incremento promedio de productividad</div>
-                    <div style="font-size:0.875rem;color:#c7d2fe;line-height:1.6;">En los primeros 90 días. Medido en horas recuperadas por el equipo del cliente.</div>
+                    <div style="font-size:0.875rem;color:#bbf7d0;line-height:1.6;">En los primeros 90 días. Medido en horas recuperadas por el equipo del cliente.</div>
                 </div>
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
@@ -649,7 +652,7 @@
                      class="w-full object-cover" style="height:13rem;transition:transform 0.4s ease;"
                      onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
                 @else
-                <div style="height:13rem;background:linear-gradient(135deg,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;">
+                <div style="height:13rem;background:linear-gradient(135deg,#16a34a,#15803d);display:flex;align-items:center;justify-content:center;">
                     <svg style="width:3.5rem;height:3.5rem;color:rgba(255,255,255,0.2);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                 </div>
                 @endif
@@ -740,8 +743,8 @@
 ═══════════════════════════════════════════════════════════ --}}
 <section id="contact" class="hero-bg py-24 relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="absolute top-0 right-0 w-80 h-80 rounded-full" style="background:rgba(99,102,241,0.06);filter:blur(80px);transform:translate(30%,-30%);"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full" style="background:rgba(99,102,241,0.05);filter:blur(60px);transform:translate(-30%,30%);"></div>
+        <div class="absolute top-0 right-0 w-80 h-80 rounded-full" style="background:rgba(22,163,74,0.06);filter:blur(80px);transform:translate(30%,-30%);"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full" style="background:rgba(22,163,74,0.05);filter:blur(60px);transform:translate(-30%,30%);"></div>
     </div>
 
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -765,7 +768,7 @@
                         'Hoja de ruta sin compromiso de compra',
                         'Respuesta en menos de 24 horas hábiles',
                     ] as $item)
-                    <div class="pipeline-item" style="border-left-color:rgba(99,102,241,0.4);">
+                    <div class="pipeline-item" style="border-left-color:rgba(22,163,74,0.4);">
                         <span style="font-size:0.875rem;font-weight:500;color:#cbd5e1;">{{ $item }}</span>
                     </div>
                     @endforeach
@@ -792,13 +795,13 @@
             </div>
 
             {{-- Formulario sobre fondo oscuro --}}
-            <div style="background:#fff;border-radius:var(--r-card);padding:2rem;box-shadow:0 25px 60px rgba(0,0,0,0.4);"
+            <div style="background:#0f2415;border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-card);padding:2rem;box-shadow:0 25px 60px rgba(0,0,0,0.5);"
                  x-data="{ sending: false }">
 
                 @if(session('contact_success'))
                 {{-- Estado: enviado correctamente --}}
                 <div style="text-align:center;padding:2rem 0;">
-                    <div style="width:3.5rem;height:3.5rem;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+                    <div style="width:3.5rem;height:3.5rem;background:rgba(22,163,74,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
                         <svg style="width:1.75rem;height:1.75rem;color:#16a34a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                         </svg>
@@ -873,14 +876,14 @@
 </section>
 
 {{-- FOOTER --}}
-<footer style="background:#060d1a;border-top:1px solid rgba(255,255,255,0.05);padding:3rem 0;">
+<footer style="background:#060d08;border-top:1px solid rgba(255,255,255,0.05);padding:3rem 0;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div style="display:flex;flex-direction:column;gap:1.5rem;" class="sm:flex-row sm:justify-between sm:items-center">
             <div>
                 <div style="font-size:1.125rem;font-weight:700;color:#f1f5f9;margin-bottom:0.25rem;">
                     {{ $settings['site_name'] ?? config('app.name') }}
                 </div>
-                <div style="font-size:0.875rem;color:#334155;">{{ $settings['site_description'] ?? 'Automatización y soluciones digitales.' }}</div>
+                <div style="font-size:0.875rem;color:#475569;">{{ $settings['site_description'] ?? 'Automatización y soluciones digitales.' }}</div>
             </div>
             <div style="display:flex;align-items:center;gap:0.75rem;">
                 @foreach([
@@ -891,7 +894,7 @@
                 @if($settings[$key] ?? null)
                 <a href="{{ $settings[$key] }}" target="_blank" rel="noopener"
                    style="width:2.25rem;height:2.25rem;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:background 0.15s;"
-                   onmouseover="this.style.background='rgba(99,102,241,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                   onmouseover="this.style.background='rgba(22,163,74,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
                     <svg style="width:0.9rem;height:0.9rem;color:#64748b;" fill="currentColor" viewBox="0 0 24 24">
                         <path d="{{ $path }}"/>
                     </svg>
